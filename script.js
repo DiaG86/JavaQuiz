@@ -1,68 +1,84 @@
-
+var timeEl = document.querySelector(".time")
+var secondsDisplay = 60;
+var questionContainer=document.getElementById('question-container')
+var shuffleQuestions, currentQuestionIndex
+var startButton =document.getElementById('start-btn')
 //I click the start button
-var startButton = document.querySelector("#start")
-var minutesDisplay = document.querySelector("#minutes");
-var secondsDisplay = document.querySelector("#seconds");
-var totalSeconds = 0;
-var secondsElapsed = 0;
-var interval;
+startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", startTimer)
+function startGame(){
+console.log("Started")
+startButton.classList.add('hide')
+}
 //THEN a timer starts and I am presented with a question
 
 
-//this launches the app by calling setTime() and renderTime()
-getTimePreferences();
-
-//These two functions are just for making sure the numbers look nice for the html elements
-function getFormattedMinutes() {
-  //
-  var secondsLeft = totalSeconds - secondsElapsed;
-
-  var minutesLeft = Math.floor(secondsLeft / 60);
-
-  var formattedMinutes;
-
-  if (minutesLeft < 10) {
-    formattedMinutes = "0" + minutesLeft;
-  } else {
-    formattedMinutes = minutesLeft;
-  }
-
-  return formattedMinutes;
-}
-
-function getFormattedSeconds() {
-  var secondsLeft = (totalSeconds - secondsElapsed) % 60;
-
-  var formattedSeconds;
-
-  if (secondsLeft < 10) {
-    formattedSeconds = "0" + secondsLeft;
-  } else {
-    formattedSeconds = secondsLeft;
-  }
-
-  return formattedSeconds;
-}
-
 //WHEN I answer a question
 //THEN I am presented with another question
+function setNextQuestion(){
+
+}
 //WHEN I answer a question incorrectly
+function selectAnswer(){}
+
+var questions = [
+  {
+      question: “What are variables?“,
+      answers: [
+          { text: “programming adjectives”, correct: false },
+          { text: “programming verbs”, correct: false },
+          { text: “programming nouns“, correct: true },
+          { text: “programming pronouns”, correct: false }
+      ]
+  },
+  {
+      question: “What is Java script for?“,
+      answers: [
+          { text: “webpage styling”, correct: false },
+          { text: “dynamic design”, correct: true },
+          { text: “basic creation”, correct: false },
+          { text: “none of the above”, correct: false }
+      ]
+  },
+  {
+      question: “which one is not a coding language?“,
+      answers: [
+          { text: “Coffee”, correct: true },
+          { text: “Java”, correct: false },
+          { text: “CSS”, correct: false },
+          { text: “html”, correct: false }
+      ]
+  },
+  {
+      question: “Which is not a coffee brand?“,
+      answers: [
+          { text: “maxwell house”, correct: false },
+          { text: “starbucks”, correct: false },
+          { text: “dunkin”, correct: false },
+          { text: “Olive garden”, correct: true }
+      ]
+  },
+  {
+      question: “why couldn’t the react component understand the joke?“,
+      answers: [
+          { text: “it didn’t get the context”, correct: true },
+          { text: “it was too drunk to understand”, correct: false },
+          { text: “it didn’t hear the joke”, correct: false },
+          { text: “it didn’t know and didn’t care”, correct: false }
+      ]
+  }
+
 //THEN time is subtracted from the clock
 //WHEN all questions are answered or the timer reaches 0
 //THEN the game is over
 //WHEN the game is over
 //THEN I can save my initials and score
 
-//questions and answers
-//1)What are variables
-//*NOUNS OF PROGRAMMING,ADJECTIVES OF PROGRAMMING,VERBS OF PROGRAMMING/PRONOUNS OF PROGRAMMING
-//2)What is Java script for?
-//STYLE WEBS DESIGN/CREATE BASIC WEB DESIGN/ *CREATE DYNAMIC WEB DESIGN/NONE OF THE ABOVE
-//E)What command prints content to the debugger?
-//*CONSOLE.LOG, CONFIRM,APPEND,SET ATTRIBUTE
-//4)Which of these genreates T/F value?
-//ALERTS/*CONFIRM/PROMPT/ELSE IF
-//5) What is a variable that is a collection?
-//*ARRAY/LOOP/FORM/COLOR
 
-startButton.addEventListener("click", startTimer);
+$(".startBtn".on("click", function(event) {
+  event.preventDefault)
+})
+
+]
+
+;
