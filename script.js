@@ -3,27 +3,100 @@ var secondsDisplay = 60;
 var questionContainer=document.getElementById('question-container')
 var shuffleQuestions, currentQuestionIndex
 var startButton =document.getElementById('start-btn')
+var questionEL= document.getElementById('question')
+var answerEL = document.getElementById('answer-buttons')
+var nextButton =document.getElementById('next-btn')
+var timeEl = document.querySelector(".time");
+var mainEl = document.getElementById("main");
+var secondsLeft = 60;
+
 //I click the start button
 startButton.addEventListener("click", startGame)
-startButton.addEventListener("click", startTimer)
-function startGame(){
-console.log("Started")
-startButton.classList.add('hide')
-}
+nextButton.addEventListener('click',()=>)
 //THEN a timer starts and I am presented with a question
+startButton.addEventListener("click", startTimer)
 
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+
+  }, 1000);
+}
+
+function sendMessage("Time's up!");
 
 //WHEN I answer a question
+function startGame(){
+  console.log("Started")
+  startButton.classList.add('hide')
+  shuffleQuestions =questions.sort('hide')
+  currentQuestionIndex = 0
+  questionContainer.classList.renove('hide')
+  }
 //THEN I am presented with another question
 function setNextQuestion(){
+  resetState
+  showQuestion(shuffleQuestions[currentQuestionIndex])
 
 }
-//WHEN I answer a question incorrectly
-function selectAnswer(){}
 
-var questions = [
-  {
-      question: “What are variables?“,
+function showQuestion(question){
+  questionEL.innerText = question.question 
+  question.answers.forEach(answer=>{
+    var button = document.createElement('button')
+    button.innerText = answer.text
+    button.classList.add('btn')
+
+    if (answer,correct)(
+      button.dataset.correct =answer.correct
+    )
+    button.addEventListener('click', selectAnswer)
+    answerEL.appendChild(button)
+  })
+}
+function resetState(){
+  nextButton.classList.add('hide')
+  while (answerButtonsElement.firstChild){
+    answerButtonsElement.removeChild
+    (answerButtonsElement.firstChild)
+  }
+  
+}
+//WHEN I answer a question incorrectly
+function selectAnswer(e){
+  var selectedButton = e.target
+  var correct =selectedButton.dataset.correct
+  setStatusClass(document.body,correct)
+  Array.from(answerButtonsElement.children).forEach(button=>{
+    setStatusClass(button, button.datatset.correct)
+  })
+  if (shuffleQuestions.length > currentQuestionIndex + 1){
+nextButton.classList.remove('hide')
+}else {
+  startButton.innerText = 'Restart'
+  startButton.classList.remove('hide')
+}
+ function setStatusClass(element, correct){
+   clearStatusClass(element)
+   if (correct){
+     element.classList.add('correct')
+   } else{
+     element.classList.add('wrong')
+   }
+ }
+ function clearStatusClass(element){
+   element.classList.remove('correct')
+   element,classList.add("wrong'")
+ }
+
+var questions = [{
+      question:(“What are variables?“,
       answers: [
           { text: “programming adjectives”, correct: false },
           { text: “programming verbs”, correct: false },
@@ -47,8 +120,7 @@ var questions = [
           { text: “Java”, correct: false },
           { text: “CSS”, correct: false },
           { text: “html”, correct: false }
-      ]
-  },
+      ]},
   {
       question: “Which is not a coffee brand?“,
       answers: [
@@ -66,7 +138,7 @@ var questions = [
           { text: “it didn’t hear the joke”, correct: false },
           { text: “it didn’t know and didn’t care”, correct: false }
       ]
-  }
+  }];
 
 //THEN time is subtracted from the clock
 //WHEN all questions are answered or the timer reaches 0
@@ -75,9 +147,9 @@ var questions = [
 //THEN I can save my initials and score
 
 
-$(".startBtn".on("click", function(event) {
-  event.preventDefault)
-})
+// $(".startBtn".on("click", function(event) {
+//   event.preventDefault)
+// })
 
 ]
 
